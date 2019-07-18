@@ -1,0 +1,14 @@
+<html>
+    <body>
+      <form [formGroup]="cryptdata" ><h1>CryptData</h1> 
+        <div class="main">
+          <div class="form-group"><h3>Username </h3>
+            <input type="text" class="form-control"  formControlName="username" placeholder="Enter Username" required><br>
+          </div> <br><br>
+         <button class="button" type="submit" (click)="onencrypt(cryptdata.value.username)">Encrypt</button><span></span>
+         <button class="button" type="submit" (click)="ondecrypt(edata)">Decrypt</button><br><br>
+         <a routerLink='/login'>Go Back</a>
+        </div>
+      </form>
+    </body>
+</html>

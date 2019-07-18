@@ -1,0 +1,132 @@
+<html>
+  <body>
+    <h1>EDIT FORM</h1>
+    <div class="main">
+    <form [formGroup]="regisform" novalidate>
+      <label><b>Name : </b></label>
+      <input type="text" placeholder="enter your name" class="form-control"  formControlName="name" required><br><br>
+      <div *ngIf="regisform.controls['name'].invalid && (regisform.controls['name'].dirty || regisform.controls['name'].touched)" >
+          enter the name
+        </div>
+        <div *ngIf="regisform.controls['name'].errors?.required">
+          name is required
+        </div>
+        <div *ngIf="regisform.controls['name'].errors?.minlength">
+          min length is 5 char
+        </div>
+
+        <label><b>Date of Birth:</b></label>
+        <my-date-picker name="dob" [options]="myDatePickerOptions1" class="form-control" formControlName="dob"required (dateChanged)="onDateChanged($event)"></my-date-picker><br><br>
+      <!-- <input type="date"  placeholder="enter DOB"  class="form-control"  formControlName="dob" required><br><br>
+      <div *ngIf="regisform.controls['dob'].invalid && (regisform.controls['dob'].dirty || regisform.controls['dob'].touched)">
+        enter the Date of birth
+      </div>
+    <div *ngIf="regisform.controls['dob'].errors?.required">
+        Date of birth is required
+     </div>    -->
+
+
+      <label><b>Email : </b></label>
+      <input type="email"  placeholder="enter email" required class="form-control"  formControlName="mail"><br><br>
+      <div *ngIf="regisform.controls['mail'].invalid && (regisform.controls['mail'].dirty || regisform.controls['mail'].touched)">
+      </div>
+      <div *ngIf="regisform.controls['mail'].errors?.required">
+          email is required
+      </div>
+
+
+      <label><b>Phone number : </b></label>
+      <input type="text"  placeholder="enter phone no" class="form-control"  formControlName="ph" required><br><br>
+      <div *ngIf="regisform.controls['ph'].invalid && (regisform.controls['ph'].dirty || regisform.controls['ph'].touched)">
+      </div>
+      <div *ngIf="regisform.controls['ph'].errors?.pattern">
+          phone number is required
+      </div>
+
+      <div class="sta">
+          <ng-multiselect-dropdown name="states" formControlName="states" [placeholder]="'Select State'"
+          [data]="states" [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
+        </ng-multiselect-dropdown>
+      <!-- <select name="state" required formControlName="state">
+        <option value="">Select State</option>
+        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+        <option value="Assam">Assam</option>
+        <option value="Bihar">Bihar</option>
+        <option value="Chandigarh">Chandigarh</option>
+        <option value="Chhattisgarh">Chhattisgarh</option>
+        <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+        <option value="Daman and Diu">Daman and Diu</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Goa">Goa</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Haryana">Haryana</option>
+        <option value="Himachal Pradesh">Himachal Pradesh</option>
+        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+        <option value="Jharkhand">Jharkhand</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Kerala">Kerala</option>
+        <option value="Lakshadweep">Lakshadweep</option>
+        <option value="Madhya Pradesh">Madhya Pradesh</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Manipur">Manipur</option>
+        <option value="Meghalaya">Meghalaya</option>
+        <option value="Mizoram">Mizoram</option>
+        <option value="Nagaland">Nagaland</option>
+        <option value="Orissa">Orissa</option>
+        <option value="Pondicherry">Pondicherry</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Rajasthan">Rajasthan</option>
+        <option value="Sikkim">Sikkim</option>
+        <option value="Tamil Nadu">Tamil Nadu</option>
+        <option value="Tripura">Tripura</option>
+        <option value="Uttaranchal">Uttaranchal</option>
+        <option value="Uttar Pradesh">Uttar Pradesh</option>
+        <option value="West Bengal">West Bengal</option>
+      </select><br><br> -->
+      <!-- <div *ngIf="regisform.controls['state'].invalid && regisform.controls['state'].dirty || regisform.controls['state'].touched"></div>
+      <div *ngIf="regisform.controls['state'].errors?.required">State is required</div> -->
+      </div><br>
+
+
+      <label><b>Gender : </b></label>
+      <input type="radio" name="gender" value="male" required class="form-control"  formControlName="gender" >Male
+      <input type="radio" name="gender" value="female" required class="form-control"  formControlName="gender" >Female<br><br>
+
+      <label><b>Department : </b></label>
+      <select name="dpmid"  formControlName="dpmid">
+          <option value="1">Accounts and Finance.</option>
+          <option value="2">Human Resource Management</option>
+          <option value="3">Sales and marketing</option>
+          <option value="4">Infrastructures.</option>
+          <option value="5">Research and development</option>
+          <option value="6">Learning and development</option>
+          <option value="7">IT services.</option>
+          <option value="8">Product development.</option>
+        </select><br>
+
+      <label><b>Password : </b></label>
+      <input type="password"  placeholder="enter Password" class="form-control"  formControlName="password" required><br><br>
+      <div *ngIf="regisform.controls['password'].invalid && (regisform.controls['password'].dirty || regisform.controls['password'].touched)">
+      </div>
+      <div *ngIf="regisform.controls['password'].errors?.minlength">
+        min length is 6 char
+      </div>
+
+      <label><b>Date of Joining:</b></label>
+      <my-date-picker name="doj" [options]="myDatePickerOptions2" class="form-control" formControlName="doj"required (dateChanged)="onDateChanged($event)"></my-date-picker><br><br>
+
+      <span class="check"><input type="checkbox" name="check" required formControlName="check"> 
+        <label for="check">I want to get updates about website</label> </span><br><br>
+
+      <button (click)="save(regisform.value)" [disabled]="regisform.pristine || regisform.invalid"><b>Save</b></button><br><br>
+    </form>
+  </div>
+  <br><br><br>
+</body>
+</html>
+
+<router-outlet></router-outlet>
+
+

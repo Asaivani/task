@@ -1,0 +1,20 @@
+<body>
+<h1> Datepicker </h1>
+<div class="main">
+
+<form [formGroup]="dateform" novalidate>
+<label><b>StartDate:</b></label>
+<my-date-picker name="start" [options]="myDatePickerOptions1"  formControlName="start" required (dateChanged)="onDateChanged($event)"></my-date-picker><br><br>
+
+<label><b>EndDate:</b></label>
+<my-date-picker name="end" [options]="myDatePickerOptions2"  formControlName="end" required (dateChanged)="onDateChanged1($event)"></my-date-picker><br><br>
+
+<label><b>DateRange:</b></label>
+<my-date-range-picker name="mydaterange" [options]="myDateRangePickerOptions" formControlName="myDateRange" required (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
+
+<label><b>RangeReverse:</b></label>
+<my-date-range-picker name="mydaterevrange" [options]="myDateRangePickerOptions1" formControlName="myDateRevRange" required (dateRangeChanged)="onDateRangeChanged1($event)"></my-date-range-picker>
+</form>
+</div>
+</body>
+

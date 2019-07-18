@@ -1,0 +1,65 @@
+<!-- <html>
+  <body>
+    <h1>BOOTSTRAP FORM</h1>
+    <div class="main">
+
+    <form [formGroup]="bootform" novalidate>
+
+      <label><b>Name : </b></label>
+      <input type="text" placeholder="enter your name" class="form-control"  formControlName="name" required><br><br>
+
+      <div *ngIf="bootform.controls['name'].invalid && (bootform.controls['name'].dirty || bootform.controls['name'].touched)" >
+          enter the name
+        </div>
+        <div *ngIf="bootform.controls['name'].errors?.required">
+          name is required
+        </div>
+        <div *ngIf="bootform.controls['name'].errors?.minlength">
+          min length is 5 char
+        </div>
+
+        <label><b>Date of Birth:</b></label>
+        <input  placeholder="" class="form-control" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" ><br><br>
+
+        <label><b>SampleDaterange</b></label>
+        <input placeholder="" class="form-control" bsDaterangepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD-YYYY-MM-DD'}" ><br><br>
+
+        <label><b>Email : </b></label>
+      <input type="email"  placeholder="enter email" required class="form-control"  formControlName="mail"><br><br>
+      <div *ngIf="bootform.controls['mail'].invalid && (bootform.controls['mail'].dirty ||bootform.controls['mail'].touched)">
+      </div>
+      <div *ngIf="bootform.controls['mail'].errors?.required">
+          email is required
+      </div>
+
+      <label><b>Phone number : </b></label>
+      <input type="text"  placeholder="enter phone no" class="form-control"  formControlName="ph" required><br><br>
+      <div *ngIf="bootform.controls['ph'].invalid && (bootform.controls['ph'].dirty || bootform.controls['ph'].touched)">
+      </div>
+      <div *ngIf="bootform.controls['ph'].errors?.pattern">
+          phone number is required
+      </div>
+
+      <label><b>Password : </b></label>
+      <input type="password"  placeholder="enter Password" class="form-control"  formControlName="password" required><br><br>
+      <div *ngIf="bootform.controls['password'].invalid && (bootform.controls['password'].dirty || bootform.controls['password'].touched)">
+      </div>
+      <div *ngIf="bootform.controls['password'].errors?.minlength">
+        min length is 6 char
+      </div>
+
+      <input type="checkbox" name="check" required formControlName="check"> 
+        <label for="check">I want to get updates about website</label><br><br>
+
+        <button (click)="newreg(bootform.value)"><b>NewRegister</b></button><br><br>
+    </form>
+  </div>
+  <br><br><br>
+</body>
+</html>
+
+<router-outlet></router-outlet>
+
+
+
+ -->

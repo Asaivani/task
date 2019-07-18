@@ -1,0 +1,37 @@
+<h2>Registrations</h2>
+<button class="b"><a routerLink='/empdetails'>EmployeeDetails</a></button>
+<div  class="but">
+<button type="submit" (click)="add()">ADD</button>
+</div>
+  <table>
+    <thead>
+      <th>Id</th>
+      <th>Name</th>
+      <th>DateOfBirth</th>
+      <th>Email</th>
+      <th>PhoneNumber</th>
+      <th>State</th>
+      <th>Gender</th>
+      <th>DepartmentsId</th>
+      <th>password</th>
+      <th>DateOfJoining</th>
+      <th>options</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let da of select">
+        <td>{{da.Id}}</td>
+        <td>{{da.Name}}</td>
+        <td>{{da.DateofBirth}}</td>
+        <td>{{da.Email}}</td>
+        <td>{{da.PhoneNumber}}</td>
+        <td>{{da.State}}</td>
+        <td>{{da.Gender}}</td>
+        <td>{{da.DepartmentId}}</td>
+        <td>{{da.password}}</td>
+        <td>{{da.DateofJoining}}</td> 
+        <td><button type="submit" (click)="edit(da)">EDIT</button><span></span>
+            <button type="submit" (click)="del(da.Id)">DELETE</button></td>
+      </tr>
+      
+    </tbody>
+</table>

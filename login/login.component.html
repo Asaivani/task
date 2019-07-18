@@ -1,0 +1,20 @@
+<html>
+    <a routerLink='/datepicker'>Datepicker</a><br>
+    <body>
+      <script src="scripts/vendor/underscore.js"></script> 
+      <form [formGroup]="loginForm" ><h1>Login Form</h1> 
+        <a routerLink='/dateboot'>dateboot</a><br>
+        <div class="main">
+          <div class="form-group"><h3>Username </h3>
+            <input type="text" class="form-control"  formControlName="username" placeholder="Enter Username" required><br>
+          </div>
+          <div class="form-group"><h3>Password</h3>
+            <input type="password" class="form-control"  formControlName="password" placeholder="Enter Password" required><br><br><br>
+          </div>
+         <button  class= "button" type="submit" (click)="onSubmit(loginForm.value)">Login</button><span></span><br><br>
+        <a routerLink='/regform'>SignUp</a><br>
+        <a routerLink='/crypt'>Encrypt/Decrypt</a><br> 
+        </div>
+      </form>
+    </body>
+</html>
