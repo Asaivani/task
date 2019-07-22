@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addtemp.component.scss']
 })
 export class AddtempComponent implements OnInit {
-  id: number;
+
   firstName:String;
   email:String;
   password:string;
@@ -27,7 +27,7 @@ export class AddtempComponent implements OnInit {
     }
     additem(){
       this.form.items.push({
-        id: Date.now(),
+        
         firstName: "",
         email: "",
         password: "",
