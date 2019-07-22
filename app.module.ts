@@ -22,6 +22,13 @@ import { CryptComponent } from './crypt/crypt.component';
 //import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 //import { DatebootComponent } from './dateboot/dateboot.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { AddformComponent } from './addform/addform.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AddtempComponent } from './addtemp/addtemp.component'; 
+
+
 
 
 
@@ -41,7 +48,11 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
     EmpdetailsComponent,
     CryptComponent,
     //DatebootComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    CalendarComponent,
+    AddformComponent,
+    NavbarComponent,
+    AddtempComponent,
 
   ],
   imports: [
@@ -57,7 +68,8 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
     CalendarModule,
     //BrowserAnimationsModule,
     //BsDatepickerModule.forRoot(),
-    
+    FullCalendarModule
+
 
 
     

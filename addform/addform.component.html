@@ -1,62 +1,41 @@
 <html>
-    <body><h1>Add Form</h1>
-        <form [formGroup]="addForm" >
-
+    <body>
+        <h1>Add Form</h1>
+        <form [formGroup]="addForm">
             <div formArrayName="forms" *ngFor="let item of addForm.get('forms').controls; let i = index;" class="main">
-
                 <div [formGroupName]="i">
                     <h3>FullName</h3>
                     <input type="text" formControlName="fullname" placeholder="enter fullname" required>
-
-                    <!-- <div *ngIf="addForm.controls.forms.controls[i].controls['fullname'].invalid && (addForm.controls.forms.controls[i].controls['fullname'].dirty || addForm.controls.forms.controls[i].controls['fullname'].touched)">
-                   <div *ngIf="addForm.controls.forms.controls[i].controls['fullname'].errors.required" class="error">
-                    Name is required.</div>
-                </div> -->
-
-    <div *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)"
-    class="alert alert-danger">
-
-  <div *ngIf="fullname.errors.required">
-    Name is required.
-  </div>
-  <div *ngIf="fullname.errors.minlength">
-    Name must be at least 4 characters long.
-  </div>
-  <div *ngIf="fullname.errors.forbiddenName">
-    Name cannot be Bob.
-  </div>
-</div>
-
-                    <br><br>
-
+                    <div *ngIf="addForm.controls.forms.controls[i].controls['fullname'].invalid && (addForm.controls.forms.controls[i].controls['fullname'].dirty || addForm.controls.forms.controls[i].controls['fullname'].touched)">
+                        <div *ngIf="addForm.controls.forms.controls[i].controls['fullname'].errors.required" class="error">
+                            Name is required.
+                        </div>
+                    </div><br><br>
                     <h3>Email</h3>
                     <input type="email" formControlName="email" placeholder="enter email" required>
-
                     <div *ngIf="addForm.controls.forms.controls[i].controls['email'].invalid && (addForm.controls.forms.controls[i].controls['email'].dirty || addForm.controls.forms.controls[i].controls['email'].touched)">
-                    <div *ngIf="addForm.controls.forms.controls[i].controls['email'].errors.required" class="error">
-                     Email is required.</div>
-                    <div *ngIf="addForm.controls.forms.controls[i].controls['email'].errors.email" class="error">
-                    Email is invalid.</div>
-                    </div>
-
-                    <br><br>
+                        <div *ngIf="addForm.controls.forms.controls[i].controls['email'].errors.required" class="error">
+                            Email is required.
+                        </div>
+                        <div *ngIf="addForm.controls.forms.controls[i].controls['email'].errors.email" class="error">
+                            Email is invalid.
+                        </div>
+                    </div><br><br>
                     <h3>Password</h3>
                     <input type="password" formControlName="password" placeholder="enter password" required>
-
                     <div *ngIf="addForm.controls.forms.controls[i].controls['password'].invalid && (addForm.controls.forms.controls[i].controls['password'].dirty || addForm.controls.forms.controls[i].controls['password'].touched)">
-                    <!-- <div *ngIf="addForm.controls.forms.controls[i].controls['password'].errors?.pattern" class="error">Enter the password </div> -->
-                    <div *ngIf="addForm.controls.forms.controls[i].controls['password'].errors.required" class="error">Password is required.</div>
-                    </div>
-                    <br><br><br>
-                    <button  class= "button" type="submit" (click)="delete(addForm.value)">Delete</button>
-                    </div>
-
-                    </div>
-                    <button  class= "button" type="submit" (click)="add(addForm.value)">Add</button><span></span><br><br><br>
-                </form>
-                <button  class= "button" type="submit"  [disabled]="!addForm.valid" ><b>Save</b></button>
-            </body>
-        </html>
+                        <div *ngIf="addForm.controls.forms.controls[i].controls['password'].errors.required" class="error">
+                            Password is required.
+                        </div>
+                    </div><br><br><br>
+                    <button  class= "button" type="submit" (click)="delete(i)">Delete</button>
+                </div>
+            </div>
+            <button  class= "button" type="submit" (click)="add(addForm.value)">Add</button><span></span><br><br><br>
+        </form>
+        <button class="btn btn-primary" type="submit"  [disabled]=" !addForm.valid" ><b>Save</b></button>
+    </body>
+</html>
 
 
 <!-- <div *ngIf="addForm.controls.items.controls[i].controls['name'].invalid && (addForm.controls.items.controls[i].controls['name'].dirty || addForm.controls.items.controls[i].controls['name'].touched)">

@@ -12,8 +12,8 @@ export class AppComponent  implements OnInit{
   
   constructor(public first : Router){}
   ngOnInit(){
-    
-     this.first.navigate(["login"]);
+     this.first.navigate(["navbar"]);
+     //this.first.navigate(["login"]);
     //this.first.navigate(["regform"]);
   }
 //  login(){

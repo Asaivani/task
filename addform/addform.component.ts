@@ -15,24 +15,22 @@ export class AddformComponent implements OnInit {
 
   createItem(): FormGroup {
     return this.fb.group({
-      fullname: '',
-      email: '',
-      password: ''
+      fullname: ['',[Validators.required]],
+      email: ['',[Validators.required,Validators.email]],
+      password:['',[Validators.required]],
     });
+    
+    
   }
 
   ngOnInit() {
     this.addForm = this.fb.group({
-      // fullname: ['',[Validators.required]],
-      // email: ['',[Validators.required,Validators.email]],
-      // password:['',[Validators.required]],
       forms: this.fb.array([ this.createItem() ])
     });
+    
   }
-  get demoArray() {
-    return this.addForm.get('demoArray') as FormArray;
- }
-  add(){
+
+  add():void{ 
     this.forms = this.addForm.get('forms') as FormArray;
     this.forms.push(this.createItem());
   }

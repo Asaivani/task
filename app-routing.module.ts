@@ -10,7 +10,10 @@ import {EmpdetailsComponent} from './empdetails/empdetails.component';
 import {CryptComponent} from './crypt/crypt.component';
 //import { DatebootComponent } from './dateboot/dateboot.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
-
+import { CalendarComponent } from './calendar/calendar.component';
+import { AddformComponent } from './addform/addform.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AddtempComponent } from './addtemp/addtemp.component'; 
 
 
 
@@ -25,6 +28,11 @@ const routes: Routes = [
    { path:'crypt',component:CryptComponent },
    //{ path:'dateboot',component:DatebootComponent },
    { path:'datepicker',component:DatepickerComponent },
+   { path:'calendar',component:CalendarComponent },
+   { path:'addform',component:AddformComponent},
+   { path:'navbar',component:NavbarComponent},
+   { path:'addtemp',component:AddtempComponent},
+   
 
 ];
 

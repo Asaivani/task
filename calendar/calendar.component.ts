@@ -22,8 +22,6 @@ events:any;
   calendarEvents: EventInput[] = [
     { },
   ];
-   
- 
 
   toggleVisible() {
     this.calendarVisible = !this.calendarVisible;
