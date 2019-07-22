@@ -1,0 +1,45 @@
+<html>
+    <body>
+        <h1>Add TempForm</h1>
+        <form #f="ngForm" >
+            <div>
+                <ng-template ngFor let-item [ngForOf]="form.items" let-index="index" class="main">
+                    <h3>FirstName</h3>
+                    <input type="text" name="firstName_{{ item.id }}"  [(ngModel)]="item.firstName" #firstName="ngModel" required minlength="4"><br><br>
+                    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+                        <div *ngIf="firstName.errors.required">
+                            Name is required.
+                        </div>
+                        <div *ngIf="firstName.errors.minlength">
+                            Name must be at least 4 characters long.
+                        </div>
+                    </div>
+                    <h3 class="a">Email</h3>
+                    <input type="email"  name="email_{{ item.id }}"  [(ngModel)]="item.email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required ><br><br>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                        <div *ngIf="email.errors.required">
+                            Email is required.
+                        </div>
+                        <div *ngIf="email.errors?.pattern">
+                            Email invalid.
+                        </div>
+                    </div>
+                    <h3>Password</h3>
+                    <input type="password" name="password_{{ item.id }}" [(ngModel)]="item.password" #password="ngModel" required minlength="8"><br><br>
+                    <div *ngIf="password.invalid && (password.dirty ||password.touched)" class="alert alert-danger">
+                            <div *ngIf="password.errors.required">
+                                password is required.
+                            </div>
+                            <div *ngIf="password.errors.minlength">
+                                password must be at least 8 characters long.
+                            </div>
+                        </div>
+                    <button  class= "button" type="submit" (click)="delete(index)">Delete</button>
+                </ng-template>
+            </div>
+            <button  class= "button" type="submit" (click)="additem()">Add</button><span></span><br><br><br>
+        </form>
+        <button  class="btn btn-primary" type="submit" [disabled]="!f.form.valid" (click)="save(form.items)" ><b>Save</b></button>
+    </body>
+</html>
+
