@@ -1,13 +1,111 @@
+<!-- <body>
+    <br>
+<div class="head">
+    <h1>My Angular Project</h1>
+</div>
+
 <div class="main">
+     <ul>
+        <ul>
+        <li> <a class="nav-link" [routerLink]="['/crypt']">Encrypt/Decrypt</a></li><span></span></ul>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">RegistrationDetails<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li> <a class="nav-link" [routerLink]="['/data']">Registrations</a></li>
+                <li> <a class="nav-link" [routerLink]="['/otherdetails']">OtherDetails</a></li>
+            </ul>
+        </li>
+    </ul> 
+     
 <span></span>
 <a routerLink='/crypt'>Encrypt/Decrypt</a><span></span>
-<a routerLink='/data'>Registration Details</a><span></span>
+<a routerLink='/data'>RegistrationDetails</a><span></span>
+<a routerLink='/empdetails'>EmployeeDetails</a><span></span>
+<a routerLink='/chart'>HighChart</a><span></span>
+<a routerLink='/otherdetails'>OtherDetails</a><span></span>
 <a routerLink='/datepicker'>Datepicker</a><span></span>
+<a routerLink='/timepicker'>Timepicker</a><span></span>
 <a routerLink='/calendar'>Calendar</a><span></span>
 <a routerLink='/addform'>Addform</a><span></span>
 <a routerLink='/addtemp'>AddTemp</a><span></span>
-<a routerLink='/dateboot'>dateboot</a><span class="n1"></span>
-<a routerLink='/regform'>SignUp</a><span></span>
-<a routerLink='/login'>Login</a><span></span>
-</div>
+<a routerLink='/regtempform'>RegTempForm</a><span></span>
+<a routerLink='/dateboot' class="n2">dateboot</a><span ></span>
+<a routerLink='/regform' >SignUp</a><span></span>
+<a routerLink='/login'>Login</a><span></span> 
 
+</div>
+</body> -->
+
+
+
+<div class="head">
+    <h1>My Angular Project</h1>
+</div><br><br>
+<div class="main">
+    <nav class="navbar navbar-expand-lg navbar  navbar-light" >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto"><span style="margin-left: 1em"></span>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Forms<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li> <a class="nav-link" [routerLink]="['/regform']">Reactive Form</a></li>
+                <li> <a class="nav-link" [routerLink]="['/regtempform']">Template Form</a></li>
+              </ul>
+            </li><span style="margin-left: 2em"></span>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Employee <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li> <a class="nav-link" [routerLink]="['/data']">RegistrationDetails</a></li>
+                <li> <a class="nav-link" [routerLink]="['/empdetails']">Employee Details</a></li>
+                <li> <a class="nav-link" [routerLink]="['/otherdetails']">Other Details</a></li>
+              </ul>
+            </li><span style="margin-left: 2em"></span>
+
+
+            <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      Date/Range & TimePicker<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li> <a class="nav-link" [routerLink]="['/datepicker']">DatePicker</a></li>
+                      <li> <a class="nav-link" [routerLink]="['/timepicker']">TimePicker</a></li>
+                      <li> <a class="nav-link" [routerLink]="['/dateboot']">DateBoot</a></li>
+                    </ul>
+                  </li><span style="margin-left: 2em"></span>
+
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" [routerLink]="['/addform']">Add Form</a></li>
+                <li> <a class="nav-link" [routerLink]="['/addtemp']">Add TempForm</a></li>
+              </ul>
+            </li><span style="margin-left: 2em"></span>
+
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/calendar']">Calendar</a>
+      </li><span style="margin-left: 1em"></span>
+
+      <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['/crypt']">Encrypt/Decrypt</a>
+        </li><span style="margin-left: 2em"></span>
+
+        <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/chart']">HighChart</a>
+            </li><span style="margin-left: 2em"></span>
+
+            </ul>
+            
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"> <a class="nav-link" [routerLink]="['/regform']">Register</a></li><span style="margin-left: 2em"></span>
+            <li class="nav-item active">  <a class="nav-link" [routerLink]="['/login']">Login</a></li>
+          </ul>
+        </div>
+      </nav>
+      
+    </div>

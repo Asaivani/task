@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
+import { ExportAsService, ExportAsConfig, SupportedExtensions } from 'ngx-export-as';
 
 @Component({
   selector: 'app-empdetails',
@@ -11,10 +12,34 @@ import { AppService } from '../app.service';
 export class EmpdetailsComponent implements OnInit {
   
 
+  config: ExportAsConfig = {
+    type: 'pdf',
+    elementId: 'mytable',
+    options: {
+      jsPDF: {
+        orientation: 'landscape'
+      }
+    }
+  };
+  
+
   ta1:any;
   empd:any;
 
-  constructor(private http:HttpClient,public router : Router,public service:AppService) { }
+  constructor(private http:HttpClient,public router : Router,public service:AppService, private exportAsService: ExportAsService) { }
+
+  exportAs(type: SupportedExtensions, opt?: string) {
+    this.config.type = type;
+    if (opt) {
+      this.config.options.jsPDF.orientation = opt;
+    }
+    this.exportAsService.save(this.config, 'myFile').subscribe(() => {
+      // save started
+    });
+    // this.exportAsService.get(this.config).subscribe(content => {
+    //   console.log(content);
+    // });
+  }
 
   // list(){
   //   // this.http.get('http://localhost:5000/api/table')
@@ -40,7 +65,7 @@ export class EmpdetailsComponent implements OnInit {
     });
   }
 
-
+  
 
   ngOnInit() {
     // this.list();

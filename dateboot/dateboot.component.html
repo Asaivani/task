@@ -1,6 +1,6 @@
 <html>
   <body>
-    <h1>BOOTSTRAP FORM</h1>
+    <h3>BOOTSTRAP FORM</h3>
     <div class="main">
 
     <form [formGroup]="bootform" novalidate>
@@ -19,10 +19,10 @@
         </div>
 
         <label><b>Date of Birth:</b></label>
-        <input  placeholder="" class="form-control" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" ><br><br>
+        <input  placeholder="enter date" class="form-control" formControlName="dob" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" ><br><br>
 
         <label><b>SampleDaterange</b></label>
-        <input placeholder="" class="form-control" bsDaterangepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD-YYYY-MM-DD'}" ><br><br>
+        <input placeholder="enter range" class="form-control" formControlName="dater" bsDaterangepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD-YYYY-MM-DD'}" ><br><br>
 
         <label><b>Email : </b></label>
       <input type="email"  placeholder="enter email" required class="form-control"  formControlName="mail"><br><br>
@@ -48,10 +48,8 @@
         min length is 6 char
       </div>
 
-      <input type="checkbox" name="check" required formControlName="check"> 
-        <label for="check">I want to get updates about website</label><br><br>
-
-        <button (click)="newreg(bootform.value)"><b>NewRegister</b></button><br><br>
+      <input type="checkbox" name="check" required formControlName="check">I want to get updates about website<br><br>
+      <button (click)="newreg(bootform.value)"><b>NewRegister</b></button><br><br>
     </form>
   </div>
   <br><br><br>

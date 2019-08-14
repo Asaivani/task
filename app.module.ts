@@ -13,27 +13,31 @@ import { EditformComponent } from './editform/editform.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import {AccordionModule} from 'primeng/accordion'; 
-import {MenuItem} from 'primeng/api';
-import {CalendarModule} from 'primeng/calendar';
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import {AccordionModule} from 'primeng/accordion'; 
+//import {MenuItem} from 'primeng/api';
+//import {CalendarModule} from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmpdetailsComponent } from './empdetails/empdetails.component';
 import { CryptComponent } from './crypt/crypt.component';
-//import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-//import { DatebootComponent } from './dateboot/dateboot.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DatebootComponent } from './dateboot/dateboot.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { AddformComponent } from './addform/addform.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AddtempComponent } from './addtemp/addtemp.component'; 
-
-
-
-
-
-
-
+import { AddtempComponent } from './addtemp/addtemp.component';
+import { RegtempformComponent } from './regtempform/regtempform.component';
+import { NgSrcModule } from 'ng-src'; 
+import { FileSelectDirective } from 'ng2-file-upload';
+import { AdddataComponent } from './adddata/adddata.component';
+import { ChartModule,HIGHCHARTS_MODULES  } from 'angular-highcharts';
+import { ChartComponent } from './chart/chart.component';
+import drilldown from 'highcharts/modules/drilldown.src.js';
+import { ExportAsModule } from 'ngx-export-as';
+import { TimepickerComponent } from './timepicker/timepicker.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -47,13 +51,19 @@ import { AddtempComponent } from './addtemp/addtemp.component';
     EditformComponent,
     EmpdetailsComponent,
     CryptComponent,
-    //DatebootComponent,
+    DatebootComponent,
     DatepickerComponent,
     CalendarComponent,
     AddformComponent,
     NavbarComponent,
     AddtempComponent,
-
+    RegtempformComponent,
+    FileSelectDirective,
+    AdddataComponent,
+    ChartComponent,
+    TimepickerComponent,
+    
+   
   ],
   imports: [
     BrowserModule,
@@ -64,17 +74,26 @@ import { AddtempComponent } from './addtemp/addtemp.component';
     MyDatePickerModule,
     MyDateRangePickerModule,
     NgMultiSelectDropDownModule.forRoot(),
-    AccordionModule,
-    CalendarModule,
-    //BrowserAnimationsModule,
-    //BsDatepickerModule.forRoot(),
-    FullCalendarModule
+    //AccordionModule,
+    //CalendarModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
+    FullCalendarModule,
+    NgSrcModule,
+    ChartModule,
+    ExportAsModule,
+    NgbModule,
+    NgbPaginationModule,
+    NgbAlertModule
+
 
 
 
     
   ],
-  providers: [],
+  providers: [
+    { provide: HIGHCHARTS_MODULES, useFactory: () => [drilldown] } // add as factory to your providers
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

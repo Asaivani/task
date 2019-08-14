@@ -2,7 +2,9 @@
     <body>
         <h1>Add TempForm</h1>
         <form #f="ngForm" >
-                <ng-template ngFor let-item [ngForOf]="form.items" let-index="index" class="main">
+            
+                <ng-template ngFor let-item [ngForOf]="form.items" let-index="index" >
+                        <div class="main">
                     <h3>FirstName</h3>
                     <input type="text" name="{{item.firstName}}"  [(ngModel)]="item.firstName" #firstName="ngModel" required minlength="4"[ngModelOptions]="{standalone: true}"><br><br>
                     <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
@@ -33,11 +35,12 @@
                                 password must be at least 8 characters long.
                             </div>
                         </div>
-                    <button  class= "button" type="submit" (click)="delete(index)">Delete</button>
-                </ng-template>
+                    <button  class= "button" type="submit" (click)="delete(index)">Delete</button></div>
+                </ng-template><br><br>
             <button  class= "button" type="submit" (click)="additem()">Add</button><span></span><br><br><br>
+            <button  class="btn btn-primary" type="submit" [disabled]="!f.form.valid" (click)="save(form.items)" ><b>Save</b></button>
         </form>
-        <button  class="btn btn-primary" type="submit" [disabled]="!f.form.valid" (click)="save(form.items)" ><b>Save</b></button>
+        
     </body>
 </html>
 

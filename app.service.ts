@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AppService {
 data;
+path;
   constructor(public http : HttpClient) { }
 
   update(data,id):Observable<any>{

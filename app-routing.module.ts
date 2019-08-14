@@ -8,12 +8,17 @@ import { DataComponent } from './data/data.component';
 import { EditformComponent } from './editform/editform.component';
 import {EmpdetailsComponent} from './empdetails/empdetails.component';
 import {CryptComponent} from './crypt/crypt.component';
-//import { DatebootComponent } from './dateboot/dateboot.component';
+import { DatebootComponent } from './dateboot/dateboot.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { AddformComponent } from './addform/addform.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddtempComponent } from './addtemp/addtemp.component'; 
+import { RegtempformComponent } from './regtempform/regtempform.component'; 
+import { AdddataComponent } from './adddata/adddata.component';
+import { ChartComponent } from './chart/chart.component';
+import { TimepickerComponent } from './timepicker/timepicker.component';
+
 
 
 
@@ -26,14 +31,16 @@ const routes: Routes = [
    { path:'editform',component:EditformComponent},
    { path:'empdetails',component:EmpdetailsComponent},
    { path:'crypt',component:CryptComponent },
-   //{ path:'dateboot',component:DatebootComponent },
+   { path:'dateboot',component:DatebootComponent },
    { path:'datepicker',component:DatepickerComponent },
+   { path:'timepicker',component:TimepickerComponent },
    { path:'calendar',component:CalendarComponent },
    { path:'addform',component:AddformComponent},
    { path:'navbar',component:NavbarComponent},
    { path:'addtemp',component:AddtempComponent},
-   
-
+   { path:'regtempform',component:RegtempformComponent},
+   { path:'otherdetails',component:AdddataComponent},
+   { path:'chart',component:ChartComponent},
 ];
 
 @NgModule({

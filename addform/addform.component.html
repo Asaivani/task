@@ -4,14 +4,14 @@
         <form [formGroup]="addForm">
             <div formArrayName="forms" *ngFor="let item of addForm.get('forms').controls; let i = index;" class="main">
                 <div [formGroupName]="i">
-                    <h3>FullName</h3>
+                    <h3><b>FullName</b></h3>
                     <input type="text" formControlName="fullname" placeholder="enter fullname" required>
                     <div *ngIf="addForm.controls.forms.controls[i].controls['fullname'].invalid && (addForm.controls.forms.controls[i].controls['fullname'].dirty || addForm.controls.forms.controls[i].controls['fullname'].touched)">
                         <div *ngIf="addForm.controls.forms.controls[i].controls['fullname'].errors.required" class="error">
                             Name is required.
                         </div>
                     </div><br><br>
-                    <h3>Email</h3>
+                    <h3><b>Email</b></h3>
                     <input type="email" formControlName="email" placeholder="enter email" required>
                     <div *ngIf="addForm.controls.forms.controls[i].controls['email'].invalid && (addForm.controls.forms.controls[i].controls['email'].dirty || addForm.controls.forms.controls[i].controls['email'].touched)">
                         <div *ngIf="addForm.controls.forms.controls[i].controls['email'].errors.required" class="error">
@@ -21,20 +21,33 @@
                             Email is invalid.
                         </div>
                     </div><br><br>
-                    <h3>Password</h3>
-                    <input type="password" formControlName="password" placeholder="enter password" required>
-                    <div *ngIf="addForm.controls.forms.controls[i].controls['password'].invalid && (addForm.controls.forms.controls[i].controls['password'].dirty || addForm.controls.forms.controls[i].controls['password'].touched)">
-                        <div *ngIf="addForm.controls.forms.controls[i].controls['password'].errors.required" class="error">
-                            Password is required.
-                        </div>
-                    </div><br><br><br>
+
+                    <h3><b> Phone number </b></h3>
+                   <input type="text"  placeholder="enter phone no"  formControlName="ph" required><br><br>
+                   <div *ngIf="addForm.controls.forms.controls[i].controls['ph'].invalid && (addForm.controls.forms.controls[i].controls['ph'].dirty || addForm.controls.forms.controls[i].controls['ph'].touched)">
+                   <div *ngIf="addForm.controls.forms.controls[i].controls['ph'].errors.required" class="error">
+                        phone number required.
+                    </div>
+                   <div *ngIf="addForm.controls.forms.controls[i].controls['ph'].errors.pattern">
+                       phone number is valid
+                    </div>
+                    </div>
+
+                    <h3><b>Photo</b></h3>
+                    <input type="file" formControlName="file" ng2FileSelect [uploader]="uploader" accept="image/*" />
+                    <!-- <button type="button" class="btn btn-success btn-s"  (click)="uploader.uploadAll()" 
+                    [disabled]="!uploader.getNotUploadedItems().length" > Upload File</button> -->
+                    <br><br><br>
+
                     <button  class= "button" type="submit" (click)="delete(i)">Delete</button>
-                </div>
-            </div>
+                </div><br><br>
+            </div><br><br>
             <button  class= "button" type="submit" (click)="add(addForm.value)">Add</button><span></span><br><br><br>
+            <button class="btn btn-primary" type="submit" (click)="uploader.uploadAll()"  (click)="save(addForm.value)" [disabled]=" !addForm.valid" ><b>Save</b></button>
         </form>
-        <button class="btn btn-primary" type="submit"  [disabled]=" !addForm.valid" ><b>Save</b></button>
+       
     </body>
+    
 </html>
 
 

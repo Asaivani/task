@@ -16,7 +16,7 @@
         </div>
 
         <label><b>Date of Birth:</b></label>
-        <my-date-picker name="dob" [options]="myDatePickerOptions1" class="form-control" formControlName="dob"required (dateChanged)="onDateChanged($event)"></my-date-picker><br><br>
+        <my-date-picker name="dob" [options]="dateOfBirth" formControlName="dob"></my-date-picker><br><br>
       <!-- <input type="date"  placeholder="enter DOB"  class="form-control"  formControlName="dob" required><br><br>
       <div *ngIf="regisform.controls['dob'].invalid && (regisform.controls['dob'].dirty || regisform.controls['dob'].touched)">
         enter the Date of birth
@@ -29,9 +29,12 @@
       <label><b>Email : </b></label>
       <input type="email"  placeholder="enter email" required class="form-control"  formControlName="mail"><br><br>
       <div *ngIf="regisform.controls['mail'].invalid && (regisform.controls['mail'].dirty || regisform.controls['mail'].touched)">
-      </div>
       <div *ngIf="regisform.controls['mail'].errors?.required">
           email is required
+      </div>
+      <div *ngIf="regisform.controls['mail'].errors.email" class="error">
+        Invalid mail.
+      </div>
       </div>
 
 
@@ -43,10 +46,19 @@
           phone number is required
       </div>
 
-      <div class="sta">
-          <ng-multiselect-dropdown name="states" formControlName="states" [placeholder]="'Select State'"
-          [data]="states" [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
-        </ng-multiselect-dropdown>
+     <div class="sta">
+      <ng-multiselect-dropdown name="statess" formControlName="states" [(ngModel)]="selectedItems"
+      [data]="states"  [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)=" onSelectAll($event)">
+    </ng-multiselect-dropdown>
+
+        <!-- <select (change)="onSelect($event.target.value)" [(ngModel)]="selectedState.id">
+          <option *ngFor="let state of states" value= {{state.id}}>
+             {{state.name}}
+          </option>
+        </select> -->
+
+
+
       <!-- <select name="state" required formControlName="state">
         <option value="">Select State</option>
         <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -91,8 +103,13 @@
 
 
       <label><b>Gender : </b></label>
-      <input type="radio" name="gender" value="male" required class="form-control"  formControlName="gender" >Male
-      <input type="radio" name="gender" value="female" required class="form-control"  formControlName="gender" >Female<br><br>
+      <!-- <input type="radio" name="gender" value="male" required class="form-control"  formControlName="gender" >Male
+      <input type="radio" name="gender" value="female" required class="form-control"  formControlName="gender" >Female<br><br> -->
+      <input type="radio" formControlName="gender" value="male" 
+      required > Male
+      <input type="radio" formControlName="gender" value="female" 
+      required > Female
+      <br>
 
       <label><b>Department : </b></label>
       <select name="dpmid"  formControlName="dpmid">
@@ -114,8 +131,24 @@
         min length is 6 char
       </div>
 
+      <label><b>Shifts:</b></label>
+      <ng-multiselect-dropdown name="shiftss" formControlName="shifts" [placeholder]="'Select Shift'" [(ngModel)]="selectedShifts"
+      [data]="shifts" [disabled]="disabled" [settings]="dropdownSetting" (onSelect)="onShiftSelect($event)" (onSelectAll)=" onShiftSelectAll($event)" required>
+    </ng-multiselect-dropdown><br>
+
+    <label><b>ShiftDuration:</b></label>
+    <input type="number"  placeholder="enter shift duration" class="form-control"  formControlName="sduration" required><br>
+    <div *ngIf="regisform.controls['sduration'].invalid && (regisform.controls['sduration'].dirty || regisform.controls['sduration'].touched)">
+      <div *ngIf="regisform.controls['sduration'].errors?.required" class="error">
+       ShiftDuration is required
+     </div>
+     <div *ngIf="regisform.controls['sduration'].errors.pattern" class="error">
+       Invalid ShiftDuration.
+     </div>
+   </div>
+
       <label><b>Date of Joining:</b></label>
-      <my-date-picker name="doj" [options]="myDatePickerOptions2" class="form-control" formControlName="doj"required (dateChanged)="onDateChanged($event)"></my-date-picker><br><br>
+      <my-date-picker name="doj" [options]="dateOfJoining" formControlName="doj"></my-date-picker><br><br>
 
       <span class="check"><input type="checkbox" name="check" required formControlName="check"> 
         <label for="check">I want to get updates about website</label> </span><br><br>

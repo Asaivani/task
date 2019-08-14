@@ -1,48 +1,26 @@
 <html>
   <body>
     <h1>Registration Form</h1>
-    <!-- <a routerLink='/empdetails'>EmployeeDetails</a> -->
     <div class="main">
-    <form [formGroup]="regisform" novalidate>
-      
-      <label><b>Name : </b></label>
-      <input type="text" placeholder="enter your name" class="form-control"  formControlName="name" required><br><br>
+    <form  [formGroup]="regisform" novalidate>
+
+      <label><b>Name:</b></label>
+      <input type="text" placeholder="enter your name" class="form-control"  formControlName="name" required><br>
       <div *ngIf="regisform.controls['name'].invalid && (regisform.controls['name'].dirty || regisform.controls['name'].touched)" >
-          enter the name
-        </div>
-        <div *ngIf="regisform.controls['name'].errors?.required">
+        enter the name
+        <div *ngIf="regisform.controls['name'].errors?.required" class="error">
           name is required
         </div>
-        <div *ngIf="regisform.controls['name'].errors?.minlength">
+        <div *ngIf="regisform.controls['name'].errors?.minlength" class="error">
           min length is 5 char
         </div>
+      </div>
 
       <label><b>Date of Birth:</b></label>
-      <my-date-picker name="dob" [options]="myDatePickerOptions1" class="form-control" formControlName="dob"required (dateChanged)="onDateChanged($event)"></my-date-picker><br><br>
-      
-     
-      <!-- <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker> -->
-      <!-- <hr/>
-      <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectToday()">Select Today</button>
-      <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
-      <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button>
-      <hr/> -->
-      <!-- <pre>Month: {{ date.month }}.{{ date.year }}</pre>
-      <pre>Model: {{ model | json }}</pre> -->
+      <my-date-picker name="dob" [options]="dateOfBirth" formControlName="dob"></my-date-picker><br>
 
-
-
-      
-      
-      
-      
-      
-      <!-- <hr/> 
-      <pre>Model: {{ model | json }}</pre>-->
       <!-- <label><b>StartDate:</b></label>
       <my-date-picker name="from" [options]="myDatePickerOptions3" class="form-control" formControlName="from"required (dateChanged)="onDateChanged($event)"></my-date-picker><br><br>
-      
-
       <label><b>EndDate:</b></label>
       <my-date-picker name="to" [options]="myDatePickerOptions4" class="form-control" formControlName="to"required (dateChanged)="onDateChanged($event)"></my-date-picker><br><br> -->
       <!-- <input type="date"  placeholder="enter DOB"  class="form-control"  formControlName="dob" required><br><br>
@@ -53,35 +31,32 @@
         Date of birth is required
      </div>    -->
 
-
-      <label><b>Email : </b></label>
-      <input type="email"  placeholder="enter email" required class="form-control"  formControlName="mail"><br><br>
-      <div *ngIf="regisform.controls['mail'].invalid && (regisform.controls['mail'].dirty || regisform.controls['mail'].touched)">
+     <label><b>Email:</b></label>
+     <input type="email"  placeholder="enter email" class="form-control"  formControlName="mail" required><br>
+     <div *ngIf="regisform.controls['mail'].invalid && (regisform.controls['mail'].dirty || regisform.controls['mail'].touched)">
+       <div *ngIf="regisform.controls['mail'].errors?.required" class="error">
+        email is required
       </div>
-      <div *ngIf="regisform.controls['mail'].errors?.required">
-          email is required
+      <div *ngIf="regisform.controls['mail'].errors.email" class="error">
+        Invalid mail.
       </div>
-
-     
-
-
-      <label><b>Phone number : </b></label>
-      <input type="text"  placeholder="enter phone no" class="form-control"  formControlName="ph" required><br><br>
-      
-      <div *ngIf="regisform.controls['ph'].invalid && (regisform.controls['ph'].dirty || regisform.controls['ph'].touched)">
+    </div>
+    
+    <label><b>Phone number:</b></label>
+    <input type="text"  placeholder="enter phone no" class="form-control"  formControlName="ph" required><br>
+    <div *ngIf="regisform.controls['ph'].invalid && (regisform.controls['ph'].dirty || regisform.controls['ph'].touched)">
+      <div *ngIf="regisform.controls['ph'].errors?.pattern" class="error">
+        phone number is required
       </div>
-      <div *ngIf="regisform.controls['ph'].errors?.pattern">
-          phone number is required
-      </div>
-
-      
-
-      <!-- <select name="state" required formControlName="state">
+    </div>
+    
+    <!-- <select name="state" required formControlName="state">
         <option value="">Select State</option> -->
         <div class="sta">
           <ng-multiselect-dropdown name="states" formControlName="states" [placeholder]="'Select State'"
-          [data]="states" [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)">
-        </ng-multiselect-dropdown><br><br>
+          [data]="states" [disabled]="disabled" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)=" onSelectAll($event)" required>
+        </ng-multiselect-dropdown>
+      </div><br>
 
 
 
@@ -128,13 +103,20 @@
       <!-- <div  *ngIf="regisform.controls['states'].invalid && (regisform.controls['states'].dirty || regisform.controls['state'].touched)"></div>
       <div *ngIf="regisform.controls['state'].errors?.required">State is required</div>
       </div><br> -->
-</div>
-      <label><b>Gender : </b></label>
-      <input type="radio" name="gender" value="male" required class="form-control"  formControlName="gender" >Male
-      <input type="radio" name="gender" value="female" required class="form-control"  formControlName="gender" >Female<br><br>
 
-      <label><b>Department : </b></label>
-      <select name="dpmid"  formControlName="dpmid">
+      <label><b>Gender : </b></label>
+      <!-- <input type="radio" name="gender" value="male" required class="form-control"  formControlName="gender" >Male<br><br><br>
+      <input type="radio" name="gender" value="female" required class="form-control"  formControlName="gender" >Female<br><br> -->
+
+      <input type="radio" formControlName="gender" value="male" 
+      required > Male
+      <input type="radio" formControlName="gender" value="female" 
+      required > Female
+      <br>
+
+
+      <label><b>Department:</b></label>
+      <select name="dpmid"  formControlName="dpmid" required>
           <option value="1">Accounts and Finance.</option>
           <option value="2">Human Resource Management</option>
           <option value="3">Sales and marketing</option>
@@ -145,22 +127,48 @@
           <option value="8">Product development.</option>
         </select><br>
 
-      <label><b>Password : </b></label>
-      <input type="password"  placeholder="enter Password" class="form-control"  formControlName="password" required><br><br>
+      <label><b>Password:</b></label>
+      <input type="password"  placeholder="enter Password" class="form-control"  formControlName="password" required><br>
       <div *ngIf="regisform.controls['password'].invalid && (regisform.controls['password'].dirty || regisform.controls['password'].touched)">
-      </div>
-      <div *ngIf="regisform.controls['password'].errors?.minlength">
-        min length is 6 char
+          <div *ngIf="regisform.controls['password'].errors?.pattern" class="error">
+              password is required
+            </div>
+        <div *ngIf="regisform.controls['password'].errors?.minlength" class="error">
+          min length is 6 char
+        </div>
       </div>
 
       <label><b>Date of Joining:</b></label>
-      <my-date-picker name="doj" [options]="myDatePickerOptions2" class="form-control" formControlName="doj"required (dateChanged)="onDateChanged($event)"></my-date-picker><br><br>
+      <my-date-picker name="doj" [options]="dateOfJoining" formControlName="doj"></my-date-picker>
+      <br>
 
-      <span class="check"><input type="checkbox" name="check" required formControlName="check"> 
-        <label for="check">I want to get updates about website</label> </span><br><br>
+      <label><b>Photo:</b></label>
+      <input type="file" formControlName="file" ng2FileSelect [uploader]="uploader" accept="image/*" required/><br>
+      <button type="button" class="btn btn-success btn-s"  (click)="uploader.uploadAll()" 
+      [disabled]="!uploader.getNotUploadedItems().length" >Upload File</button><br>
 
-      <button (click)="onsubmit(regisform.value)" [disabled]="regisform.pristine || regisform.invalid"><b>Register</b></button><br><br>
-      
+      <label><b>Shifts:</b></label>
+      <ng-multiselect-dropdown name="shifts" formControlName="shifts" [placeholder]="'Select Shift'"
+      [data]="shifts" [disabled]="disabled" [settings]="dropdownSetting" (onSelect)="onShiftSelect($event)" (onSelectAll)=" onShiftSelectAll($event)" required>
+    </ng-multiselect-dropdown><br>
+
+    <label><b>ShiftDuration:</b></label>
+    <input type="number"  placeholder="enter shift duration" class="form-control"  formControlName="sduration" required><br>
+    <div *ngIf="regisform.controls['sduration'].invalid && (regisform.controls['sduration'].dirty || regisform.controls['sduration'].touched)">
+      <div *ngIf="regisform.controls['sduration'].errors?.required" class="error">
+       ShiftDuration is required
+     </div>
+     <div *ngIf="regisform.controls['sduration'].errors.pattern" class="error">
+       Invalid ShiftDuration.
+     </div>
+   </div>
+
+
+      <span class="check"><input type="checkbox" name="check" formControlName="check" required> 
+        <label for="check">I want to get updates about website</label> </span><br>
+
+      <button  (click)="onsubmit(regisform.value)" [disabled]="regisform.pristine || regisform.invalid"><b>Register</b></button>
+      <!-- <button class="btn btn-primary" type="submit" (click)="onsubmit(regisform.value)" [disabled]=" regisform.valid" ><b>Register</b></button> -->
     </form>
   </div>
   <br><br><br>
@@ -168,4 +176,3 @@
 </html>
 
 <router-outlet></router-outlet>
-

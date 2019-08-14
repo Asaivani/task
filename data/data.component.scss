@@ -3,7 +3,7 @@ table,thead,th,td,tr{
     margin-left: 5%;
 }
 th, td {
-    padding: 12px;
+    padding: 15px;
   }
   h2{
     text-align: center;
@@ -12,9 +12,23 @@ th, td {
     padding:7px;
     background-color:rgb(93, 240, 93);
   }
-  .but{
-      margin-left: 1250px;
-  }
+  // .but{
+  //     margin-left: %;
+  // }
   .b{
-    margin-left: 590px;
+    margin-left: 690px;
   }
+  input{
+  height:40px;
+  width:400px;
+  
+}
+.s{
+  margin-left: 990px;
+}
+a{
+  text-decoration: none;
+}
+button:hover{
+  color:blueviolet;
+}

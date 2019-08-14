@@ -11,8 +11,22 @@
     </tbody>
 </table> -->
 
-<h2>EmployeeAllDetails</h2>
-<table>
+<h2>EmployeeAllDetails</h2><br><br><span class="a"></span>
+<button (click)="exportAs('pdf', 'portrait')">export as pdf</button><span></span>
+<button (click)="exportAs('pdf', 'landscape')">export as pdf landscape</button><span></span>
+<button (click)="exportAs('png')">export as png</button><span></span>
+<button (click)="exportAs('csv')">export as csv</button><span></span>
+<button (click)="exportAs('txt')">export as txt</button><span></span>
+<button (click)="exportAs('xlsx')">export as Ms-Excel</button><span></span>
+<button (click)="exportAs('docx')">export as MS-Word</button><span></span>
+<button (click)="exportAs('json')">export as json</button><span></span>
+<button (click)="exportAs('xml')">export as xml</button><span></span>
+<br><br><br>
+
+<input type="text" ng-model="search" 
+placeholder="Enter some text to search" /><span></span>search
+
+<table id='mytable'>
     <thead>
         <th>EmployeeId</th>
         <th>EmployeeName</th>
@@ -24,8 +38,16 @@
         <td>{{b.Id}}</td>
         <td>{{b.Name}}</td>
         <td>{{b.id}}</td>
-        <td>{{b.department}}</td>
+        <td>{{b.department}}</td></tr>
+         <!-- TABLE ROWS WITH A FILTER
+         <tr ng-repeat="emps in employees | filter : search">
+             <td>{{emps.id}}</td>
+             <td>{{emps.name}}</td>
+             <td>{{emps.joinDate | date : 'dd/MM/yyyy'}}</td>
+             <td>{{emps.age}}</td></tr> -->
     </tbody>
 </table>
+<br><br>
+
 
 

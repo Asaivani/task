@@ -24,26 +24,28 @@ export class DatebootComponent implements OnInit {
     check:new FormControl('')
   })
 
-  myDate = moment().format('YYYY-MM-DD')
+  //myDate = moment().format('YYYY-MM-DD')
 
   constructor(public fb: FormBuilder,private http:HttpClient,public service:AppService,private router:Router) { }
 
   ngOnInit() {
     this.bootform= this.fb.group({
-      name: [this.bootform.value.name,[Validators.required,Validators.minLength(5)]],
+      name: ['',[Validators.required,Validators.minLength(5)]],
       dob: ['',[Validators.required]],
       dater: ['',[Validators.required]],
       mail: ['',[Validators.required,Validators.email]],
       ph:['',[Validators.required,Validators.pattern("[0-9]{10}")]],
       password:['',[Validators.required,Validators.minLength(6)]],
       check:['',[Validators.requiredTrue]],
+      //dob:[true],
+      //dater:[true]
     });
   }
 
   newreg(item){
-     item['dob']=moment(item.dob.formatted).format('YYYY-MM-DD');
-     item['dater']=moment(item.dater.formatted).format('YYYY-MM-DD-YYYY-MM-DD');
-    console.log(item);
+     //item['dob']=moment(item.dob.formatted).format('YYYY-MM-DD');
+     //item['dater']=moment(item.dater.formatted).format('YYYY-MM-DD-YYYY-MM-DD');
+    console.log(JSON.stringify(item));
   }
 
 }

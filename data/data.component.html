@@ -1,11 +1,20 @@
-<h2>Registrations</h2>
-<button class="b"><a routerLink='/empdetails'>EmployeeDetails</a></button>
-<div  class="but">
-<button type="submit" (click)="add()">ADD</button>
+<h2>Registrations</h2> 
+<!-- <button type="submit" name="button" (click)="search()">Search</button><span></span>
+<input type="text" name="search" class="form-control" formControlName="search"> -->
+<div class="s">
+  <form action="/action_page.php">
+    <input type="text" placeholder="Search.." #search1 name="search1">
+    <button type="submit" name="button" (click)="search(search1.value)">Search</button>
+    <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
+  </form>
 </div>
-  <table>
+<!-- <input class="b1"  type="text" name="search" formControlName="search"><button  class="but1" type="submit" (click)="search()">Search</button><br> -->
+<button class="b"><a routerLink='/empdetails'>EmployeeDetails</a></button><button  class="but" type="submit" (click)="add()">ADD</button>
+
+<table>
     <thead>
       <th>Id</th>
+      <th>profile</th>
       <th>Name</th>
       <th>DateOfBirth</th>
       <th>Email</th>
@@ -14,12 +23,19 @@
       <th>Gender</th>
       <th>DepartmentsId</th>
       <th>password</th>
+      <th>Shifts</th>
+      <th>Duration</th>
       <th>DateOfJoining</th>
       <th>options</th>
     </thead>
     <tbody>
-      <tr *ngFor="let da of select">
-        <td>{{da.Id}}</td>
+      <!-- <tr *ngFor="let da of select">
+        <td>{{da.Id}}</td> -->
+         <!-- <tr  *ngFor="let item of tabledata"> -->
+          <tr  *ngFor="let da of arr1">
+            <td>{{da.Id}}</td>
+           <td><img [src]="(imgurl + da.photo)" border="0" 
+            alt="profile" width="100" height="100" /></td> 
         <td>{{da.Name}}</td>
         <td>{{da.DateofBirth}}</td>
         <td>{{da.Email}}</td>
@@ -28,6 +44,59 @@
         <td>{{da.Gender}}</td>
         <td>{{da.DepartmentId}}</td>
         <td>{{da.password}}</td>
+        <td>{{da.shift_order}}</td>
+        <td>{{da.shift_duration}}</td>
+        <td>{{da.DateofJoining}}</td> 
+        <td><button type="submit" (click)="edit(da)">EDIT</button><span></span>
+            <button type="submit" (click)="del(da.Id)">DELETE</button></td>
+      </tr>
+      
+    
+<!-- <div  class="but">
+<button type="submit" (click)="add()">ADD</button>
+</div> -->
+ 
+    <!-- <thead>
+      <th>Id</th>
+      <th>profile</th>
+      <th>Name</th>
+      <th>DateOfBirth</th>
+      <th>Email</th>
+      <th>PhoneNumber</th>
+      <th>State</th>
+      <th>Gender</th>
+      <th>DepartmentsId</th>
+      <th>password</th>
+      <th>Shifts</th>
+      <th>Duration</th>
+      <th>DateOfJoining</th>
+      <th>options</th>
+    </thead> -->
+    <tbody>
+      <!-- <tr *ngFor="let da of select">
+        <td>{{da.Id}}</td> -->
+         <!-- <tr  *ngFor="let item of tabledata"> -->
+          <tr  *ngFor="let da of select">
+            <td>{{da.Id}}</td>
+            <!-- <td>
+           {{imgurl+item.profilePic}}</td>
+             <td *ngIf={{item.profilePic}}==null>
+            <td><img src="./assets/images/dp.png" border="0" 
+                alt="Profile Photo" width="100" height="100" /></td> -->
+           <td><img [src]="(imgurl + da.photo)" border="0" 
+            alt="profile" width="100" height="100" /></td> 
+        <!-- <td><img src="C:\practice\uploads\keerthana pic1.png" alt="" height="100" width="100" /></td> -->
+        <!-- <td>{{da.Photo}}</td> -->
+        <td>{{da.Name}}</td>
+        <td>{{da.DateofBirth}}</td>
+        <td>{{da.Email}}</td>
+        <td>{{da.PhoneNumber}}</td>
+        <td>{{da.State}}</td>
+        <td>{{da.Gender}}</td>
+        <td>{{da.DepartmentId}}</td>
+        <td>{{da.password}}</td>
+        <td>{{da.shift_order}}</td>
+        <td>{{da.shift_duration}}</td>
         <td>{{da.DateofJoining}}</td> 
         <td><button type="submit" (click)="edit(da)">EDIT</button><span></span>
             <button type="submit" (click)="del(da.Id)">DELETE</button></td>

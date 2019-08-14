@@ -5,20 +5,31 @@ import { Router } from '@angular/router';
 import { IMyDpOptions, IMyDateModel} from 'mydatepicker';
 import { IMyDrpOptions, IMyDateRangeModel } from 'mydaterangepicker';
 import * as moment from 'moment';
+import {NgbTimepickerConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbTimeStruct} from '@ng-bootstrap/ng-bootstrap';
+import { time } from 'highcharts';
+
+
 
 
 @Component({
   selector: 'app-datepicker',
   templateUrl: './datepicker.component.html',
+  providers: [NgbTimepickerConfig],
   styleUrls: ['./datepicker.component.scss']
 })
 export class DatepickerComponent implements OnInit {
+  today:any = new Date();
+ //time: NgbTimeStruct = {hour: 13, minute: 30, second: 0};
+ time:NgbTimeStruct = {hour:this.today.getHours(), minute: this.today.getMinutes() , second:this.today.getSeconds()};
+
   stdate:any;
 
   dateform = new FormGroup({
     start: new FormControl(''),
     end: new FormControl(''),
     myDateRange: new FormControl(''),
+    
   })
 
   ngOnInit() {
@@ -29,10 +40,14 @@ export class DatepickerComponent implements OnInit {
       myDateRevRange: ['', Validators.required],
 
     });
+   
   }
 
-  constructor(public fb: FormBuilder, public router: Router) { }
-
+  constructor(public fb: FormBuilder, public router: Router,config: NgbTimepickerConfig) {
+    config.seconds = true;
+    config.spinners = false;
+   }
+   
   myDatePickerOptions1: IMyDpOptions = {
     todayBtnTxt: 'Today',
     dateFormat: 'yyyy-mm-dd',
@@ -118,6 +133,7 @@ this.stdate=event.formatted;
         },
       })
   }
+  
 
 }
 

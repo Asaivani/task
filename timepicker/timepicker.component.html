@@ -1,0 +1,10 @@
+
+
+<!-- <button class = "btn btn-sm btn-outline primary" (onclick) = "selectThisMonth()" >This Month</button> -->
+<br><br>
+<h3>Today Date & Time</h3>
+<div class="f">
+<pre > <b>Date:</b> {{ toDate | json }} </pre>
+<label><b>Time:</b></label>
+<ngb-timepicker [(ngModel)]="time" class="f"></ngb-timepicker>
+</div>

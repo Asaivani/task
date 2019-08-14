@@ -1,9 +1,4 @@
-img{
-    width:350;
-    height:150;
-    margin-left:480px;
-    margin-top:270px;
-}
+
 a{
     color:red;
     text-decoration: none;
@@ -11,17 +6,27 @@ a{
     margin-left:500px;
 
 }
+// .a1{
+//     margin-left:90%; 
+// }
+.a2{
+    font-size: 30px;
+    margin-left:690px; 
+}
 .log{
     background-color:royalblue;
-    margin-left:450px;
+    margin-top:90px;
+    margin-left:600px;
     text-align:center;
     border:2px solid black;
-    width:300px;
+    border-radius:15px;
+    width:360px;
     height:280px;
     display: inline-block;
     
 }
 p{
+    margin-top:50px;
     color:white;
     font-size: 50px;  
 }

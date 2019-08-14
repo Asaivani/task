@@ -23,11 +23,10 @@ export class AddtempComponent implements OnInit {
     }
   
     ngOnInit() {
-      console.log(this.form.items)
+      //console.log(this.form.items)
     }
     additem(){
       this.form.items.push({
-        
         firstName: "",
         email: "",
         password: "",

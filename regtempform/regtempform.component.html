@@ -1,0 +1,113 @@
+<html>
+    <body>
+        <h1>Registration TempForm</h1>
+        <div class="main">
+            <form  name="form" (ngSubmit)="f.form.valid && onSubmit(f.form.value)" #f="ngForm" novalidate>
+                <label><b>Name : </b></label>
+                <input name="fname" [(ngModel)]="user.fname" #fname="ngModel" required minlength="4"><br><br>
+                
+                <div *ngIf="fname.invalid && (fname.dirty ||fname.touched)" class="alert alert-danger">
+                    <div *ngIf="fname.errors.required">
+                         Name is required.
+                    </div>
+                    <div *ngIf="fname.errors.minlength">
+                        Name must be at least 4 characters long.
+                    </div>
+                </div>
+                
+                <label><b>Date of Birth:</b></label>
+                <my-date-picker name="dob" [options]="myDatePickerOptions1"  [(ngModel)]="user.dob" #dob="ngModel" required (dateChanged)="onDateChanged($event)"></my-date-picker><br><br>
+                
+                <label><b>Email : </b></label>
+                <input type="email" [(ngModel)]="user.email" #email="ngModel" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br><br>
+                
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                        Email is required.
+                    </div>
+                    <div *ngIf="email.errors?.pattern">
+                        Email invalid.
+                    </div>
+                </div>
+                
+                <label><b>Phone number : </b></label>
+                <input  placeholder="enter phone no" [(ngModel)]="user.phone" #phone="ngModel" name="phone" pattern="[6-9][0-9]{9}" required><br><br>
+                
+                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
+                    <div *ngIf="phone.errors.required">
+                        PhoneNumber is required.
+                    </div>
+                    <div *ngIf="phone.errors?.pattern">
+                        PhoneNumber invalid.
+                    </div>
+                </div>
+                
+                <label><b>State: </b></label>
+                <select name="state" [(ngModel)]="user.state" #state="ngModel" >
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                    <option value="Daman and Diu">Daman and Diu</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                </select><br><br>
+                
+                <label><b>Gender : </b></label>
+                <input type="radio" name="gender" value="male" [(ngModel)]="user.gender" #gender="ngModel" required  >Male
+                <input type="radio" name="gender" value="female" [(ngModel)]="user.gender" #gender="ngModel" required  >Female<br><br>
+
+                <label><b>Department : </b></label>
+                <select name="dpmid" [(ngModel)]="user.dpmid" #dpmid="ngModel">
+                    <option value="1">Accounts and Finance.</option>
+                    <option value="2">Human Resource Management</option>
+                    <option value="3">Sales and marketing</option>
+                    <option value="4">Infrastructures.</option>
+                    <option value="5">Research and development</option>
+                    <option value="6">Learning and development</option>
+                    <option value="7">IT services.</option>
+                    <option value="8">Product development.</option>
+                </select><br>
+                
+                <label><b>Password : </b></label>
+                <input type="password"  placeholder="enter Password" [(ngModel)]="user.password" #password="ngModel" name="password" minlength="8" required><br><br>
+                
+                <div *ngIf="password.invalid && (password.dirty ||password.touched)" class="alert alert-danger">
+                    <div *ngIf="password.errors.required">
+                        password is required.
+                    </div>
+                    <div *ngIf="password.errors.minlength">
+                        password must be at least 8 characters long.
+                    </div>
+                </div>
+                
+                <label><b>Date of Joining:</b></label>
+                <my-date-picker name="doj" [options]="myDatePickerOptions2" [(ngModel)]="user.doj" #doj="ngModel" required (dateChanged)="onDateChanged($event)"></my-date-picker><br>
+                
+                <label for="file"><b>Choose File:</b></label>
+                <input type="file" name="photo" ng2FileSelect [uploader]="uploader" /><br>
+                <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()"
+                [disabled]="!uploader.getNotUploadedItems().length">Upload an Image</button><br><br>
+
+                <span class="check"><input type="checkbox" name="check" [(ngModel)]="user.check" #check="ngModel" required >
+                    <label for="check">I want to get updates about website</label> </span><br><br>
+                    
+                    <button [disabled]="!f.form.valid"><b>Register</b></button><br><br>
+            </form>
+        </div><br><br><br>
+    </body>
+</html>
+<router-outlet></router-outlet>
+
+

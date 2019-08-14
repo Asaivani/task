@@ -1,0 +1,19 @@
+<h2>Additional Details</h2>
+  <table>
+    <thead>
+      <th>Id</th>
+      <th>Profile</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phonenumber</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let d of sel">
+            <td>{{d.Id}}</td>
+            <td><img [src]="(imgurl + d.photo)" border="0" alt="profile" width="100" height="100" /></td>
+            <td>{{d.fullname}}</td>
+            <td>{{d.email}}</td>
+            <td>{{d.phone_number}}</td>
+      </tr>  
+    </tbody>
+</table>
